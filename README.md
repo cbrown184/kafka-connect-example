@@ -46,3 +46,7 @@ curl --location --request GET 'http://localhost:8083/'
 Get Postman http://www.postman.com
 
 Import the collection https://github.com/cbrown184/kafka-connect-example/blob/main/kafka-connect-postman-collection.json
+
+# Examples
+
+- [File Connector Example](file-connector-example.md)
