@@ -7,6 +7,92 @@
 	},
 	"item": [
 		{
+			"name": "Deploy Connectors",
+			"item": [
+				{
+					"name": "Deploy Local File Source Connector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"local-file-source\",\n  \"config\": {\n    \"connector.class\": \"FileStreamSource\",\n    \"tasks.max\": 1,\n    \"file\": \"\",\n    \"topic\": \"\"\n  }\n}\n"
+						},
+						"url": {
+							"raw": "http://{{KAFKA_HOST}}/connectors",
+							"protocol": "http",
+							"host": [
+								"{{KAFKA_HOST}}"
+							],
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deploy Local File Sink Connector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"local-file-sink\",\n  \"config\": {\n    \"connector.class\": \"FileStreamSink\",\n    \"tasks.max\": 1,\n    \"file\": \"\",\n    \"topics\": \"\"\n  }\n}\n"
+						},
+						"url": {
+							"raw": "http://{{KAFKA_HOST}}/connectors",
+							"protocol": "http",
+							"host": [
+								"{{KAFKA_HOST}}"
+							],
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deploy Email Source Connector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"email-source\",\n  \"config\": {\n    \"connector.class\": \"com.github.jcustenborder.kafka.connect.email.IMAPSourceConnector\",\n    \"tasks.max\": 1,\n    \"imap.hostname\": \"imap.gmail.com\",\n    \"imap.username\":\"email@gmail.com\",\n    \"imap.password\": \"APP_PASSWORD\",\n    \"imap.topic\": \"email-inbox\",\n    \"imap.folder\": \"INBOX\",\n    \"imap.check.interval.seconds\": \"60\",\n    \"imap.message.batch.size\": \"1\",\n    \"imap.port\": \"993\",\n    \"imap.scheme\": \"imaps\"\n  }\n}\n"
+						},
+						"url": {
+							"raw": "http://{{KAFKA_HOST}}/connectors",
+							"protocol": "http",
+							"host": [
+								"{{KAFKA_HOST}}"
+							],
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Cluster Info",
 			"request": {
 				"method": "GET",
@@ -37,60 +123,6 @@
 					],
 					"path": [
 						"connector-plugins"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Deploy Local File Source Connector",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"name\": \"local-file-source\",\n  \"config\": {\n    \"connector.class\": \"FileStreamSource\",\n    \"tasks.max\": 1,\n    \"file\": \"test.source.txt\",\n    \"topic\": \"connect-file-test\"\n  }\n}\n"
-				},
-				"url": {
-					"raw": "http://{{KAFKA_HOST}}/connectors",
-					"protocol": "http",
-					"host": [
-						"{{KAFKA_HOST}}"
-					],
-					"path": [
-						"connectors"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Deploy Local File Sink Connector",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"name\": \"local-file-sink\",\n  \"config\": {\n    \"connector.class\": \"FileStreamSink\",\n    \"tasks.max\": 1,\n    \"file\": \"test.sink.txt\",\n    \"topics\": \"connect-file-test\"\n  }\n}\n"
-				},
-				"url": {
-					"raw": "http://{{KAFKA_HOST}}/connectors",
-					"protocol": "http",
-					"host": [
-						"{{KAFKA_HOST}}"
-					],
-					"path": [
-						"connectors"
 					]
 				}
 			},
