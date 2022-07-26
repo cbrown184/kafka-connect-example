@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "7cb40725-9bf0-469b-be47-f62ed0370b53",
+		"name": "Kafka Connect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8795171"
+	},
+	"item": [
+		{
+			"name": "Cluster Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Installed Plugins",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connector-plugins",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connector-plugins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deploy Local File Source Connector",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"local-file-source\",\n  \"config\": {\n    \"connector.class\": \"FileStreamSource\",\n    \"tasks.max\": 1,\n    \"file\": \"test.source.txt\",\n    \"topic\": \"connect-file-test\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deploy Local File Sink Connector",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"local-file-sink\",\n  \"config\": {\n    \"connector.class\": \"FileStreamSink\",\n    \"tasks.max\": 1,\n    \"file\": \"test.sink.txt\",\n    \"topics\": \"connect-file-test\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connectors List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connector Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors/{{CONNECTOR_NAME}}/status",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors",
+						"{{CONNECTOR_NAME}}",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connector Config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors/{{CONNECTOR_NAME}}/config",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors",
+						"{{CONNECTOR_NAME}}",
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connector Restart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors/{{CONNECTOR_NAME}}/restart",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors",
+						"{{CONNECTOR_NAME}}",
+						"restart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connector Pause",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors/{{CONNECTOR_NAME}}/pause",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors",
+						"{{CONNECTOR_NAME}}",
+						"pause"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connector Resume",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors/{{CONNECTOR_NAME}}/resume",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors",
+						"{{CONNECTOR_NAME}}",
+						"resume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Connector Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{KAFKA_HOST}}/connectors/{{CONNECTOR_NAME}}",
+					"protocol": "http",
+					"host": [
+						"{{KAFKA_HOST}}"
+					],
+					"path": [
+						"connectors",
+						"{{CONNECTOR_NAME}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "CONNECTOR_NAME",
+			"value": "local-file-source",
+			"type": "default"
+		},
+		{
+			"key": "KAFKA_HOST",
+			"value": "localhost:8083",
+			"type": "string"
+		}
+	]
+}
