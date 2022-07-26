@@ -7,7 +7,7 @@ Install java.
 ```bash
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install java 17.0.3.6.1-amzn
+sdk install java 8.0.342-amzn
 ```
 
 Run Kafka Connect
@@ -28,7 +28,7 @@ sh $HOME/kafka/bin/connect-distributed.sh $HOME/kafka/config/connect-distributed
 # Test that it is working
 curl --location --request GET 'http://localhost:8083/'
 
-{"version":"3.2.0","commit":"38103ffaa962ef50","kafka_cluster_id":"c6URg2i-SHOLet0Dzp7hFA"}%       
+# {"version":"3.2.0","commit":"38103ffaa962ef50","kafka_cluster_id":"c6URg2i-SHOLet0Dzp7hFA"}%       
 ```
 🎉🎉🎉🎉🎉🎉🎉
 
@@ -41,3 +41,5 @@ Import the collection https://github.com/cbrown184/kafka-connect-example/blob/ma
 # Examples
 
 - [File Connector Example](file-connector-example.md)
+- [Email Connector Example](email-connector-example.md)
+
