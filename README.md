@@ -1,15 +1,6 @@
 # kafka-connect-example
 Steps to run Kafka Connect locally with some Connector examples and a Postman collection to manage your Connectors.
 
-```mermaid
-graph TD;
-KafkaConnectSource-->KafkaConnect;
-KafkaConnect-->Kafka;
-Kafka-->KafkaConnect;
-KafkaConnect-->KafkaConnectSink;
-```
-  
-
 # Pre-Requesites
 
 Install java.
