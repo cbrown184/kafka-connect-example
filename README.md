@@ -14,7 +14,7 @@ Run Kafka Connect
 ```bash
 # Download Kafka Binary,Check here if the download location is not working https://kafka.apache.org/downloads
 wget https://dlcdn.apache.org/kafka/3.2.0/kafka_2.13-3.2.0.tgz
-mv kafka_2.13-3.2.0.tar $HOME/kafka.tar && cd $HOME
+mv kafka_2.13-3.2.0.tar $HOME/kafka.tgz && cd $HOME
 tar -xzvf kafka.tar
 mv kafka_* kafka
 # Configure the location for Connect plugins.
